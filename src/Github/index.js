@@ -1,5 +1,11 @@
 import { Octokit } from "octokit";
 
+const access_token = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
+
+const octokit = new Octokit({
+  auth: access_token,
+});
+
 async function getUser(username) {
   const response = await octokit.request("GET /users/{username}", {
     username: username,
